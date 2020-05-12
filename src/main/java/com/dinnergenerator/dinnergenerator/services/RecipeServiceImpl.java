@@ -3,13 +3,11 @@ package com.dinnergenerator.dinnergenerator.services;
 import com.dinnergenerator.dinnergenerator.models.RecipePuppyModel;
 import com.dinnergenerator.dinnergenerator.models.RecipePuppyResponse;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 @Service("RecipeService")
@@ -17,7 +15,7 @@ public class RecipeServiceImpl implements RecipeService {
 
 
     @Override
-    public String getRecipeByKeyword(String mealType) {
+    public List<RecipePuppyModel> getRecipeByKeyword(String mealType) {
 
         final String baseUrl = "http://www.recipepuppy.com/api/?q=";
 
@@ -30,6 +28,16 @@ public class RecipeServiceImpl implements RecipeService {
         ArrayList<RecipePuppyModel> recipePuppyModels = response.getRecipePuppyModels();
 
         assert recipePuppyModels != null;
-        return recipePuppyModels.toString();
+        return recipePuppyModels;
+    }
+
+    @Override
+    public RecipePuppyModel getRandomRecipeByKeyword(String mealType) {
+
+        List<RecipePuppyModel> list = getRecipeByKeyword(mealType);
+        assert list != null;
+        Random rand = new Random();
+
+        return list.get(rand.nextInt(list.size()));
     }
 }

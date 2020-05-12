@@ -41,7 +41,7 @@ public class RecipePuppyModel {
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "{" +
                 "title='" + title + '\'' +
                 ", href='" + href + '\'' +
                 ", ingredients='" + ingredients + '\'' +
