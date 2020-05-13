@@ -20,7 +20,7 @@ public class SwaggerConfig {
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.dinnergenerator.dinnergenerator.controllers"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -30,13 +30,11 @@ public class SwaggerConfig {
         return new ApiInfo(
                 "Dinner Generator API",
                 "Custom API to Generate Dinners For Shelby",
-                "API TOS",
+                "v1",
                 "Terms Of Service",
                 new Contact("Nicholas Meese", "www.nowhere.com", "meesenicholas@gmail.com"),
                 "Lisence of API",
                 "",
                 Collections.emptyList());
     }
-
-
 }

@@ -5,14 +5,11 @@ public class DinnerGeneratorResponse<T>{
     private T data;
     private String error;
 
-
     public DinnerGeneratorResponse(T data){
         this.data = data;
-
     }
 
     public DinnerGeneratorResponse(){
-
     }
 
     public T getData() {
