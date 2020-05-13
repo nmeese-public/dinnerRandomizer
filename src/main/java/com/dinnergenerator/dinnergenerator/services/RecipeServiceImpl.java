@@ -74,6 +74,10 @@ public class RecipeServiceImpl implements RecipeService {
 
         logger.info(list.toString());
 
-        return list.get(rand.nextInt(list.size()));
+        if(list.size() > 0) {
+
+            return list.get(rand.nextInt(list.size()));
+        }
+        return null;
     }
 }
